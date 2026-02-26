@@ -4,3 +4,4 @@
 - `cargo install bluetui`
 - `cargo install wiremix`
 - `cargo install impala-nm`
+- `sudo apt install btop`
