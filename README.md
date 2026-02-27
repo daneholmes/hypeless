@@ -1,7 +1,7 @@
 ## Debian Hyprland Dots
-Hyprland desktop on Debian 13 that looks like Omarchy.
+Hyprland desktop on Debian 13 that looks like Omarchy. Work in progress.
 
-### Installation Pt. 1 - Hyprland
+### Install Hyprland
 1. `sudo apt install git`
 2. `mkdir -p ~/System/Repos && cd ~/System/Repos`
 4. `git clone --depth=1 https://github.com/LinuxBeginnings/Debian-Hyprland.git Debian-Hyprland` *[Read More](https://github.com/LinuxBeginnings/Debian-Hyprland)*
@@ -15,23 +15,34 @@ Hyprland desktop on Debian 13 that looks like Omarchy.
 - Terminal: kitty
 - Wallpaper: swww
 - Notification Daemon: swaynotificationcenter
-- Application launcher: hyprlauncher
-- File manager: nautilus `sudo apt instsall -y nautilus`
-- Pipewire: pipewire `sudo apt install -y pipewire`
+- Application launcher: rofi
+- File manager: nautilus `sudo apt instsall nautilus`
+- Pipewire: pipewire `sudo apt install pipewire`
 - XDG Desktop Portal: xdg-desktop-portal-hyprland
 - Status bar / shell: waybar
 - Clipboard: wl-copy
 
-### Software to install
-1. Hyprland - [LinuxBeginnings/Debian-Hyprland]()
-2. Firefox - [Read More](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions-recommended)
-3. ZSH `sudo apt install zsh zplug`
-4. EZA `sudo apt install eza`
-5. Network Manager
+### Install Software
+1. Hyprland - [LinuxBeginnings/Debian-Hyprland](https://github.com/LinuxBeginnings/Debian-Hyprland)
+2. Firefox - [Mozilla Support](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions-recommended)
+3. Zsh `sudo apt install zsh zplug`
+4. eza `sudo apt install eza`
+5. Enable NetworkManager and disable ifupdown.
 - `sudo apt install network-manager`
 - `sudo systemctl disable --now networking`
 - `sudo systemctl enable --now NetworkManager`
-6. Network Manager Tui `cargo install impala-nm`
+
+*You may have to unbind ifupdown from your current interface if you want NetworkManager to control it.*
+
+6. Network Manager TUI `cargo install impala-nm`
 7. Bluetooth `sudo apt install bluez`
-8. Bluetooth Tui `cargo install bluetui`
-9. Sound Tui `cargo install wiremix`, 
+8. Bluetooth TUI `cargo install bluetui`
+9. Audio TUI `cargo install wiremix`
+
+### To-do
+### Setup
+1. Rofi
+2. SDDM theme
+3. Hypridle, proper sleep, and screensaver
+4. Multiple color schemes with switching
+5. Firewall
