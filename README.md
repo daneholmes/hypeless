@@ -27,4 +27,11 @@ Hyprland desktop on Debian 13 that looks like Omarchy.
 2. Firefox - [Read More](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions-recommended)
 3. ZSH `sudo apt install zsh zplug`
 4. EZA `sudo apt install eza`
-5. TUIs `cargo install bluetui`, `cargo install wiremix`, `cargo install impala-nm`
+5. Network Manager
+- `sudo apt install network-manager`
+- `sudo systemctl disable --now networking`
+- `sudo systemctl enable --now NetworkManager`
+6. Network Manager Tui `cargo install impala-nm`
+7. Bluetooth `sudo apt install bluez`
+8. Bluetooth Tui `cargo install bluetui`
+9. Sound Tui `cargo install wiremix`, 
