@@ -24,6 +24,7 @@ Hyprland desktop on Debian 13 that looks like Omarchy.
 
 ### Things to install
 1. Hyprland - [LinuxBeginnings/Debian-Hyprland]()
+2. Firefox - [Read More](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions-recommended)
 - `sudo apt install zsh zplug`
 - `sudo apt install eza`
 - `cargo install bluetui`
