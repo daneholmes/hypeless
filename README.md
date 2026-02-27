@@ -10,6 +10,18 @@ Hyprland desktop on Debian 13 that looks like Omarchy.
 7. `./install.sh`
 8. On the software selection screen add `nvidia,` `input_group,` and `sddm.` Then complete the installation.
 
+### Applications
+- Authentication agent: hyprpolkit agent `systemctl --user enable hyprpolkitagent`
+- Terminal: kitty
+- Wallpaper: swww
+- Notification Daemon: swaynotificationcenter
+- Application launcher: hyprlauncher
+- File manager: nautilus `sudo apt instsall -y nautilus`
+- Pipewire: pipewire `sudo apt install -y pipewire`
+- XDG Desktop Portal: xdg-desktop-portal-hyprland
+- Status bar / shell: waybar
+- Clipboard: wl-copy
+
 ### Things to install
 1. Hyprland - [LinuxBeginnings/Debian-Hyprland]()
 - `cargo install bluetui`
