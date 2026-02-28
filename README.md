@@ -41,7 +41,8 @@ Hyprland desktop on Debian 13. *work in progress - notes & config*
 2. Audio TUI `cargo install wiremix`
 
 `git config --global user.email "you@example.com"`
-`git config --global user.nane "Your Name"`
+
+`git config --global user.name "Your Name"`
 
 ### Manual Configuration
 git clone -b main --depth=1 https://github.com/uiriansan/SilentSDDM
