@@ -38,7 +38,8 @@ Hyprland desktop on Debian 13. *work in progress - notes & config*
 4. `sudo apt install timeshift`
 4. Zsh `sudo apt install zsh zplug`
 5. eza `sudo apt install eza`
-6. Enable NetworkManager and disable ifupdown.
+6. Sway OSD `sudo apt install swayosd`
+7. Enable NetworkManager and disable ifupdown.
 - `sudo apt install network-manager`
 - `sudo systemctl disable --now networking`
 - `sudo systemctl enable --now NetworkManager`
