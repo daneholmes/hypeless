@@ -1,16 +1,20 @@
 # Set path if required
 
 # Aliases
+alias cl='clear && ls'
 alias ls='eza --color=auto'
 alias ll='eza -lah --color=auto'
 alias grep='grep --color=auto'
 alias bluetooth='bluetui'
 alias network='impala-nm'
+alias shutdown='hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0''
+alias reboot='hyprshutdown -t 'Restarting...' --post-cmd 'reboot''
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
 setopt histignorealldups sharehistory
+setopt autocd
 
 # Keep 5000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=5000
