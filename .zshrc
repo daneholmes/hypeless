@@ -2,6 +2,7 @@
 
 # Aliases
 alias cl='clear && ls'
+alias dots='cd ~/Repos/dots'
 alias ls='eza --color=auto'
 alias ll='eza -lah --color=auto'
 alias grep='grep --color=auto'
