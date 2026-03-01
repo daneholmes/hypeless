@@ -1,0 +1,27 @@
+#!/bin/bash
+# Sets the specified image as the current background (swww)
+
+set -euo pipefail
+
+if [[ $# -lt 1 || -z "${1:-}" ]]; then
+  echo "Usage: omarchy-theme-bg-set <path-to-image>" >&2
+  exit 1
+fi
+
+BACKGROUND="$1"
+CURRENT_BACKGROUND_LINK="$HOME/.config/omarchy/current/background"
+
+# Create symlink to the new background
+ln -nsf "$BACKGROUND" "$CURRENT_BACKGROUND_LINK"
+
+# Ensure swww daemon is running
+if ! swww query >/dev/null 2>&1; then
+  setsid uwsm-app -- swww-daemon >/dev/null 2>&1 &
+  for _ in {1..25}; do
+    swww query >/dev/null 2>&1 && break
+    sleep 0.04
+  done
+fi
+
+# Set the wallpaper.
+setsid uwsm-app -- swww img "$CURRENT_BACKGROUND_LINK" --resize fit >/dev/null 2>&1 &
