@@ -88,3 +88,19 @@ Current=silent
 ### Way off
 4. Multiple color schemes with switching
 5. Firewall
+
+
+sudo apt install swaybg
+
+ln -sfn ~/Repos/dots/config/hypr ~/.config/hypr
+ln -sfn ~/Repos/dots/config/kitty ~/.config/kitty
+ln -sfn ~/Repos/dots/config/waybar ~/.config/waybar
+ln -sfn ~/Repos/dots/config/user-dirs.dirs ~/.config/user-dirs.dirs
+ln -sfn ~/Repos/dots/config/xdg-terminals.list ~/.config/xdg-terminals.list
+ln -sfn ~/Repos/dots/bin ~/.local/bin
+chmod +x ~/Repos/dots/bin/*
+ln -sfn ~/Repos/dots/meta ~/.meta                                          
+ln -sfn ~/Repos/dots/themes ~/.themes
+ln -sfn ~/Repos/dots/.zshrc ~/.zshrc       
+ln -sfn ~/Repos/dots/.zshenv ~/.zshenv
+
