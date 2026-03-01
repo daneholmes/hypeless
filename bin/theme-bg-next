@@ -1,77 +1,50 @@
 #!/bin/bash
-# Cycles through the background images available, using swww (Wayland)
 
-set -euo pipefail
+# Cycles through the background images available
 
-THEME_NAME="$(cat "$HOME/.meta/current/theme.name" 2>/dev/null || true)"
+THEME_NAME=$(cat "$HOME/.meta/current/theme.name" 2>/dev/null)
 THEME_BACKGROUNDS_PATH="$HOME/.meta/current/theme/backgrounds/"
 USER_BACKGROUNDS_PATH="$HOME/.meta/backgrounds/$THEME_NAME/"
 CURRENT_BACKGROUND_LINK="$HOME/.meta/current/background"
 
-# Collect candidate images (top level only), sorted.
-mapfile -d '' -t BACKGROUNDS < <(
-	find -L "$USER_BACKGROUNDS_PATH" "$THEME_BACKGROUNDS_PATH" \
-		-maxdepth 1 -type f -print0 2>/dev/null | sort -z
-)
+mapfile -d '' -t BACKGROUNDS < <(find -L "$USER_BACKGROUNDS_PATH" "$THEME_BACKGROUNDS_PATH" -maxdepth 1 -type f -print0 2>/dev/null | sort -z)
 TOTAL=${#BACKGROUNDS[@]}
 
-# Ensure the swww daemon is running (no-op if already up).
-ensure_swww() {
-	swww query >/dev/null 2>&1 && return 0
-	setsid uwsm-app -- swww-daemon >/dev/null 2>&1 &
-	# Give the daemon a moment to come up.
-	for _ in {1..25}; do
-		swww query >/dev/null 2>&1 && return 0
-		sleep 0.04
-	done
-	return 1
-}
-
-if ((TOTAL == 0)); then
-	notify-send "No background was found for theme" -t 2000
-
-	# If swww is available, just clear to black; otherwise do nothing.
-	if command -v swww >/dev/null 2>&1 && ensure_swww; then
-		setsid uwsm-app -- swww clear 000000 >/dev/null 2>&1 || true
-	fi
-	exit 0
-fi
-
-# Read current background from symlink (if any).
-if [[ -L "$CURRENT_BACKGROUND_LINK" ]]; then
-	CURRENT_BACKGROUND="$(readlink "$CURRENT_BACKGROUND_LINK" || true)"
+if (( TOTAL == 0 )); then
+  notify-send "No background was found for theme" -t 2000
+  pkill -x swaybg
+  setsid uwsm-app -- swaybg --color '#000000' >/dev/null 2>&1 &
 else
-	CURRENT_BACKGROUND=""
-fi
+  # Get current background from symlink
+  if [[ -L $CURRENT_BACKGROUND_LINK ]]; then
+    CURRENT_BACKGROUND=$(readlink "$CURRENT_BACKGROUND_LINK")
+  else
+    # Default to first background if no symlink exists
+    CURRENT_BACKGROUND=""
+  fi
 
-# Find current background index.
-INDEX=-1
-for i in "${!BACKGROUNDS[@]}"; do
-	if [[ "${BACKGROUNDS[$i]}" == "$CURRENT_BACKGROUND" ]]; then
-		INDEX=$i
-		break
-	fi
-done
+  # Find current background index
+  INDEX=-1
+  for i in "${!BACKGROUNDS[@]}"; do
+    if [[ ${BACKGROUNDS[$i]} == $CURRENT_BACKGROUND ]]; then
+      INDEX=$i
+      break
+    fi
+  done
 
-# Select next background (wrap around).
-if ((INDEX == -1)); then
-	NEW_BACKGROUND="${BACKGROUNDS[0]}"
-else
-	NEXT_INDEX=$(((INDEX + 1) % TOTAL))
-	NEW_BACKGROUND="${BACKGROUNDS[$NEXT_INDEX]}"
-fi
+  # Get next background (wrap around)
+  if (( INDEX == -1 )); then
+    # Use the first background when no match was found
+    NEW_BACKGROUND="${BACKGROUNDS[0]}"
+  else
+    NEXT_INDEX=$(((INDEX + 1) % TOTAL))
+    NEW_BACKGROUND="${BACKGROUNDS[$NEXT_INDEX]}"
+  fi
 
-# Update symlink.
-ln -nsf "$NEW_BACKGROUND" "$CURRENT_BACKGROUND_LINK"
+  # Set new background symlink
+  ln -nsf "$NEW_BACKGROUND" "$CURRENT_BACKGROUND_LINK"
 
-# Show via swww (with sane defaults; override via env if desired).
-# You can export these elsewhere to control transitions:
-#   SWWW_TRANSITION_TYPE=center
-#   SWWW_TRANSITION_FPS=60
-#   SWWW_TRANSITION_STEP=4
-if command -v swww >/dev/null 2>&1 && ensure_swww; then
-	setsid uwsm-app -- swww img "$CURRENT_BACKGROUND_LINK" --resize fit >/dev/null 2>&1 &
-else
-	notify-send "swww not available or daemon failed to start" -t 2000
-	exit 1
+  # Relaunch swaybg
+  pkill -x swaybg
+  setsid uwsm-app -- swaybg -i "$CURRENT_BACKGROUND_LINK" -m fill >/dev/null 2>&1 &
 fi
