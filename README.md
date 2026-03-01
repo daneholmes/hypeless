@@ -17,6 +17,8 @@ Hyprland desktop on Debian 13. *work in progress - notes & config*
 
 `ln -sfn ~/Repos/dots/config/waybar ~/.config/waybar`
 
+`ln -sfn ~/Repos/dots/config/uwsm ~/.config/uwsm`
+
 `ln -sfn ~/Repos/dots/config/user-dirs.dirs ~/.config/user-dirs.dirs`
 
 `ln -sfn ~/Repos/dots/config/xdg-terminals.list ~/.config/xdg-terminals.list`
