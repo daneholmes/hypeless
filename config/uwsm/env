@@ -1,9 +1,11 @@
 # Changes require a restart to take effect.
 
-# Ensure bins are in the path
-export META_PATH="$HOME/.local/usr/hypeless"
-export PATH="$HOME/.local/bin:$PATH"
+# Ensure Omarchy bins are in the path
+export OMARCHY_PATH=$HOME/.local/share/omarchy
+export PATH=$OMARCHY_PATH/bin:$PATH
 
-. "$HOME/.config/uwsm/default"
+# Set default terminal and editor
+source ~/.config/uwsm/default
 
-hl-cmd-present mise && eval "$(mise activate bash)"
+# Activate mise if present on the system
+omarchy-cmd-present mise && eval "$(mise activate bash)"
