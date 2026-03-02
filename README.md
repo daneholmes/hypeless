@@ -6,33 +6,35 @@ _work in progress_
 
 ### INSTALL STEPS
 
-#### STEP ONE: Install Hyprland
+#### STEP ONE: INSTALL [HYPRLAND](https://github.com/LinuxBeginnings/Debian-Hyprland)
 
-1. `git clone --depth=1 https://github.com/LinuxBeginnings/Debian-Hyprland.git ~repos/Debian-Hyprland` # _use 0.53.3_
-2. `./~/repos/Debian-Hyprland/install.sh`
-3. On the software selection screen add `nvidia,` `input_group,` `thunar.` Later, select Nvidia Open Drivers # _do nvidia manually_
+1. `git clone --depth=1 https://github.com/LinuxBeginnings/Debian-Hyprland.git ~repos/Debian-Hyprland` # _use v3.0.0_
+2. `./install.sh`
+3. On the software selection screen add `nvidia,` `input_group,` `thunar.` Later, select Nvidia Open Drivers
 4. Restart.
 
-### STEP TWO: Install uwsm
+#### STEP TWO: INSTALL [SDDM](https://wiki.debian.org/SDDM)
+
+1. `sudo apt install sddm`
+2. `/etc/sddm.conf` # _[conf](https://manpages.debian.org/trixie/sddm/sddm.conf.5.en.html)_
+3. `sudo systemctl enable sddm.service`
+
+#### STEP THREE: INSTALL [USWM](https://github.com/Vladimir-csp/uwsm)
 
 1. `git clone https://github.com/Vladimir-csp/uwsm.git ~repos/uwsm`
-2. `./~/repos/uwsm/build-deb.sh`
+2. `./build-deb.sh -i`
 
-### STEP THREE: Copy hypeless
+#### STEP FOUR: COPY HYPELESS CONFIG
 
-1. `git clone https://github.com/daneholmes/hypeless.git ~/.local/usr/hypeless`
-2. `sudo apt install xdg-terminal-exec swaybg zsh zplug eza`
-3. `ln -sfn ~/.local/usr/hypeless/default/hypr ~/.config/hypr`
-4. `ln -sfn ~/.local/usr/hypeless/config/kitty ~/.config/kitty`
-5. `ln -sfn ~/.local/usr/hypeless/config/waybar ~/.config/waybar`
-6. `ln -sfn ~/.local/usr/hypeless/config/uwsm ~/.config/uwsm`
-7. `ln -s ~/.local/usr/hypeless/config/user-dirs.dirs ~/.config/user-dirs.dirs`
-8. `ln -s ~/.local/usr/hypeless/config/xdg-terminals.list ~/.config/xdg-terminals.list`
-9. `ln -sfn ~/.local/usr/hypeless/bin ~/.local/bin`
-10. `ln -sfn ~/.local/usr/hypeless/meta ~/.meta`
-11. `ln -sfn ~/.local/usr/hypeless/themes ~/.themes`
-12. `ln -s ~/.local/usr/hypeless/.zshrc ~/.zshrc`
-13. `ln -s ~/.local/usr/hypeless/.zshenv ~/.zshenv`
+1. `sudo apt install xdg-terminal-exec zsh zplug eza swaybg swayosd pipewire`
+2. `git clone https://github.com/daneholmes/hypeless.git ~/.local/share/omarchy`
+3. `cp -r ~/.local/share/omarchy/config/hypr ~/.config/hypr`
+4. `cp -r ~/.local/share/omarchy/config/kitty ~/.config/kitty`
+5. `cp -r ~/.local/share/omarchy/config/waybar ~/.config/waybar`
+6. `cp -r ~/.local/share/omarchy/config/uwsm ~/.config/uwsm`
+7. `cp ~/.local/share/omarchy/config/xdg-terminals.list ~/.config/xdg-terminals.list`
+8. `cp ~/.local/share/omarchy/.zshrc ~/.zshrc`
+9. `cp ~/.local/share/omarchy/.zshenv ~/.zshenv`
 
 ## Rest of this is notes
 
@@ -49,18 +51,11 @@ _work in progress_
 - Status bar / shell: waybar
 - Clipboard: wl-copy
 
-### Install Software
+### Misc
 
-1. [UWSM](https://github.com/Vladimir-csp/uwsm) - Use the shell script
-2. [Hyprland](https://github.com/LinuxBeginnings/Debian-Hyprland) - Use the shell script
-3. [Firefox](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions-recommended)
-4. [Sublime](https://www.sublimetext.com/docs/linux_repositories.html#apt)
-5. SwagBg (Backgrounds) `sudo apt isntall swaybg`
-6. TimeShift `sudo apt install timeshift`
-7. Zsh and Zplug `sudo apt install zsh zplug`
-8. eza (alias ls) `sudo apt install eza`
-9. Sway OSD (notification) `sudo apt install swayosd`
-10. Enable NetworkManager and disable ifupdown.
+1. [Firefox](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions-recommended)
+2. [Sublime](https://www.sublimetext.com/docs/linux_repositories.html#apt)
+3. Enable NetworkManager and disable ifupdown.
 
 - `sudo apt install network-manager`
 - `sudo systemctl disable --now networking`
