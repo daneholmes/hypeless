@@ -45,7 +45,7 @@ _work in progress_
 - Notification Daemon: swaynotificationcenter
 - Application launcher: rofi
 - File manager: thunar
-- Pipewire: pipewire `sudo apt install pipewire`
+- Pipewire: pipewire
 - XDG Desktop Portal: xdg-desktop-portal-hyprland
 - Status bar / shell: waybar
 - Clipboard: wl-copy
