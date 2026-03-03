@@ -37,7 +37,7 @@ I am starting to think I might want to make my own hyprland install script :(. w
 7. `cp -r ~/.local/share/omarchy/config/waybar ~/.config/waybar`
 8. `cp -r ~/.local/share/omarchy/config/ ~/.config/btop`
 9. `mkdir -p ~/.config/btop/themes`
-10. `ln -snf ~/.config/omarchy/current/theme/btop.theme ~/.config/btop/themes/current.theme`
+10. `ln -sf ~/.config/omarchy/current/theme/btop.theme ~/.config/btop/themes/current.theme`
 11. `cp ~/.local/share/omarchy/config/xdg-terminals.list ~/.config/xdg-terminals.list`
 12. `cp ~/.local/share/omarchy/.zshrc ~/.zshrc`
 13. `cp ~/.local/share/omarchy/.zshenv ~/.zshenv`
