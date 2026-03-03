@@ -32,9 +32,10 @@ I am starting to think I might want to make my own hyprland install script :(. w
 8. `cp -r ~/.local/share/omarchy/config/ ~/.config/btop`
 9. `mkdir -p ~/.config/btop/themes`
 10. `ln -sf ~/.config/omarchy/current/theme/btop.theme ~/.config/btop/themes/current.theme`
-11. `cp ~/.local/share/omarchy/config/xdg-terminals.list ~/.config/xdg-terminals.list`
-12. `cp ~/.local/share/omarchy/.zshrc ~/.zshrc`
-13. `cp ~/.local/share/omarchy/.zshenv ~/.zshenv`
+11. `cp ~/.local/share/omarchy/logo.txt ~/.config/omarchy/branding/screensaver.txt`
+12. `cp ~/.local/share/omarchy/config/xdg-terminals.list ~/.config/xdg-terminals.list`
+13. `cp ~/.local/share/omarchy/.zshrc ~/.zshrc`
+14. `cp ~/.local/share/omarchy/.zshenv ~/.zshenv`
 
 #### Hyprland Applications
 
