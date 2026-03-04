@@ -7,7 +7,7 @@ alias ls='eza --color=auto'
 alias ll='eza -lah --color=auto'
 alias grep='grep --color=auto'
 alias bluetooth='bluetui'
-alias network='impala-nm'
+alias network='impala'
 alias shutdown='hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0''
 alias reboot='hyprshutdown -t 'Restarting...' --post-cmd 'reboot''
 
