@@ -44,6 +44,19 @@ I am starting to think I might want to make my own hyprland install script :(. w
 20. `cargo install impala`
 21. `git config --global user.name "Your Name"`
 22. `git config --global user.email "you@example.com"`
+23. `install elephant`
+24. `sudo apt install libgtk-4-dev & libpoppler-glib-dev & libgtk4-layer-shell-dev & protobuf-compile # walker`
+25. `install walker`
+
+SDDM
+1. cp -r ~/.local/share/omarchy/default/sddm/omarchy /usr/share/sddm/themes/
+2. sudo nano /etc/sddm.conf
+3. [Theme]
+4. Current=omarchy
+5. [General]
+6. InputMethod=
+7. sudo ln -s /usr/bin/sddm-greeter-qt6 /usr/bin/sddm-greeter
+
 
 #### Hyprland Applications
 
