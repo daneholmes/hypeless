@@ -65,6 +65,7 @@ tooltip {
   opacity: 0;
 }
 
+#custom-idle-indicator,
 #custom-notification-silencing-indicator {
   min-width: 12px;
   margin-left: 5px;
